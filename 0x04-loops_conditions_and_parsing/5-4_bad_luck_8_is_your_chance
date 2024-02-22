@@ -12,6 +12,7 @@ while [ $count -lt $i ];do
         then
                 echo "back luck"
 	elif [ $count -eq 7 ]
+	then
 		echo "good luck"
 	else
 		echo "Best School"
