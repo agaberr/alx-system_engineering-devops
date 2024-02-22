@@ -10,7 +10,7 @@ while [ $count -lt $i ];do
 	
 	if [ $count -eq 8 ]
 	then
-		echo "hi"
+		echo "Hi"
 	fi
 
         ((count++))
