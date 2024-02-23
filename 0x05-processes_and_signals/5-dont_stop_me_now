@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
-# this script kils script 4
+# This script should kill process 4
 
-pkill 4-to_infinity_and_beyond
+PID=$(pgrep -f "4-to_infinity_and_beyond")
+
+if [ -n "$PID" ]; then
+    kill "$PID"
+    echo "Terminated"
+else
+    echo "Process is not running"
+fi
