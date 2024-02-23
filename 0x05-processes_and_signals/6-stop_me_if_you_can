@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
 # this script kils script 4
 
-PID=$(pgrep -f "4-to_infinity_and_beyond")
-
-if [ -n "$PID" ]; then
-    pkill -P "$PID"
-    echo "Terminated"
-else
-    echo "Process is not running"
-fi
+pkill -f beyond
