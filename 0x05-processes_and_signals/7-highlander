@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# this script gets triggered when SIGTERM
+
+handle() {
+	echo "I am invincible!!!"
+}
+
+trap 'handle' SIGTERM
+
+while true;do
+	echo "To infinity and beyond"
+	sleep 2
+done
