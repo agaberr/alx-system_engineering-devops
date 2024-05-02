@@ -1,0 +1,8 @@
+#!/bin/bash
+# nginx
+apt-get update
+apt-get install nginx -y
+sed -i 's/^\(listen\s\+\)[0-9]\+/\180/' /etc/nginx/sites-available/default
+systemctl restart nginx
+service nginx stop
+

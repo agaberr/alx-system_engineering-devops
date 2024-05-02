@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Install Nginx if not already installed
+apt-get update
+apt-get install nginx -y
+
+# Configure Nginx to listen on port 80
+sed -i 's/^\(listen\s\+\)[0-9]\+/\180/' /etc/nginx/sites-available/default
+
+# Restart Nginx to apply changes
+systemctl restart nginx
+
+# Ensure firewall allows traffic on port 80
+ufw allow 80
+
+# Display active IPv4 IPs
+ip -4 addr show | grep inet | awk '{print $2}' | cut -d'/' -f1
