@@ -12,36 +12,30 @@ from sys import argv
 
 if __name__ == "__main__":
 
-    """code here"""
-    request_user = requests.get(
-            'https://jsonplaceholder.typicode.com/users/{}'
-            .format(argv[1])
-            )
-    request_todos = requests.get(
-            'https://jsonplaceholder.typicode.com/todos?userId={}'
-            .format(argv[1])
-            )
+    sessionReq = requests.Session()
 
-    user_name = request_user.json()['name']
-    todos = request_todos.json()
+    idEmp = argv[1]
+    idURL = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(idEmp)
+    nameURL = 'https://jsonplaceholder.typicode.com/users/{}'.format(idEmp)
 
+    employee = sessionReq.get(idURL)
+    employeeName = sessionReq.get(nameURL)
 
-# { "USER_ID": [{"task": "TASK_TITLE",
-# "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"},
-# {"task": "TASK_TITLE",
-# "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"}, ... ]}
+    json_req = employee.json()
+    usr = employeeName.json()['username']
 
-file_name = "{}.json".format(argv[1])
-data = []
+    totalTasks = []
+    updateUser = {}
 
-for task in todos:
-    data.append({
-        "task": task['title'],
-        "completed": task['completed'],
-        "username": user_name
-        })
+    for all_Emp in json_req:
+        totalTasks.append(
+            {
+                "task": all_Emp.get('title'),
+                "completed": all_Emp.get('completed'),
+                "username": usr,
+            })
+    updateUser[idEmp] = totalTasks
 
-data_id = {argv[1]: data}
-
-with open(file_name, 'w') as jsonfile:
-    json.dump(data_id, jsonfile)
+    file_Json = idEmp + ".json"
+    with open(file_Json, 'w') as f:
+        json.dump(updateUser, f)
