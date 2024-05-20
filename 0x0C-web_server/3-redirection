@@ -6,7 +6,7 @@ sudo apt-get -y upgrade
 sudo apt-get -y install nginx
 sudo service nginx start
 # Performing a 301 Redirection
-string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/agaberr;"
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/agaberr permenant;"
 sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 sudo service nginx restart
 sudo service nginx reload
