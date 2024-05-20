@@ -12,6 +12,7 @@ from sys import argv
 
 if __name__ == "__main__":
 
+    """code here"""
     request_user = requests.get(
             'https://jsonplaceholder.typicode.com/users/{}'
             .format(argv[1])
