@@ -12,9 +12,15 @@ from sys import argv
 
 
 if __name__ == "__main__":
-    
-    request_user = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(argv[1]))
-    request_todos = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'.format(argv[1]))
+
+    request_user = requests.get(
+            'https://jsonplaceholder.typicode.com/users/{}'
+            .format(argv[1])
+            )
+    request_todos = requests.get(
+            'https://jsonplaceholder.typicode.com/todos?userId={}'
+            .format(argv[1])
+            )
 
     user_name = request_user.json()['name']
     todos = request_todos.json()
@@ -31,7 +37,10 @@ if __name__ == "__main__":
 
     file_name = "{}.csv".format(argv[1])
     with open(file_name, 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile, delimiter=',', quoting=csv.QUOTE_ALL)        
-        
+        writer = csv.writer(csvfile, delimiter=',', quoting=csv.QUOTE_ALL)
+
         for task in data:
-            writer.writerow([task['USER_ID'], task['USERNAME'], task['TASK_COMPLETED_STATUS'], task['TASK_TITLE']])
+            writer.writerow(
+                    [task['USER_ID'], task['USERNAME'],
+                        task['TASK_COMPLETED_STATUS'], task['TASK_TITLE']]
+                    )

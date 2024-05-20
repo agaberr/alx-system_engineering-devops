@@ -11,7 +11,7 @@ from sys import argv
 
 
 if __name__ == "__main__":
-    
+
     request_user = requests.get('https://jsonplaceholder.typicode.com/users')
     request_todos = requests.get('https://jsonplaceholder.typicode.com/todos')
 
@@ -21,10 +21,10 @@ if __name__ == "__main__":
 
     user_name = {user['id']: user['username'] for user in user}
 
-
     data = {}
 
-    # { "USER_ID": [ {"username": "USERNAME", "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, ...}
+    # { "USER_ID": [ {"username": "USERNAME",
+    # "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, ...}
 
     for task in todos:
         user_id = task['userId']
