@@ -22,7 +22,7 @@ if __name__ == "__main__":
             .format(argv[1])
             )
 
-    user_name = request_user.json()['name']
+    user_name = request_user.json()['username']
     todos = request_todos.json()
 
     # "USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE"
